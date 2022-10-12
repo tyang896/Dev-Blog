@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Blog</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <div class="flex-column justify-space-around">
+    <header class="display-flex justify-space-between align-center p-2 bg-dark min-vw-100">
+      <nav class="mb-3">
+        <a href="/" class="link-light m-3">Home</a>
+        <a href="/dashboard" class="link-light m-3">Dashboard</a>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a id="logout" class="link-light m-3">logout</a>
+        {{else}}
+        <a href="/login" class="link-light m-3">login</a>
+        {{/if}}
+      </nav>
+
+      <!-- Render the sub layout -->
+      {{{ body }}}
+      <h1 class="text-bg-light d-inline-flex rounded p-2 mx-3 fw-bold">
+        The Tech Blog
+    </h1>
+    </header>
+    <main class="container container-fluid mt-5">
+        <div class="border border-dark mb-4 blog-post">
+            <div class="d-flex bg-dark p-2">
+                <h3 class="text-light">
+                    {{post.title}}
+                </h3>
+                <p class="ms-auto text-light">
+                    Posted by {{post.user.username}} on {{format_date post.date_created}}
+                </p>
+            </div>
+            <p class="p-2">
+                {{post.description}}
+            </p>
+        </div>
+
+        <div>
+            
+        </div>
+        <div class="container border border-dark mb-4 p-3">
+            <div>
+                <p>
+                    Comment
+                </p>
+                <form class="form comment-form">
+                    <textarea class="w-100"></textarea>
+                    <div class="form-group mt-2">
+                        <button class="btn btn-dark w-100" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+    <script src="./js/index.js"></script>
+    </main>
+    <footer>
+      
+    </footer>
+  </div>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>

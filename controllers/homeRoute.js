@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         });
 
         const posts = postData.map((post) => post.get({plain: true}));
-        console.log(`This is the posts list: ${posts}`);
+
         res.render('homepage', {
             posts,
             logged_in: req.session.logged_in
@@ -55,6 +55,30 @@ router.get('/login', (req, res) => {
 
 router.get('/signup', (req, res) => {
     res.render('signup');
+})
+
+router.get('/:id',  withAuth, async (req, res) => {
+  try{
+    const postData = await Post.findByPk(req.params.id, {
+      attributes: { exclude: ['password'] },
+      include: [
+        { 
+          model: User,
+          attributes: ['username'], 
+        },
+      ],
+    })
+
+    const post = postData.get({plain: true});
+
+    res.render('blogpost', {
+      post,
+      logged_in: true,
+    });
+  }catch (err) {
+    res.status(400).json(err);
+  }
+    
 })
 
 module.exports = router;

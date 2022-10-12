@@ -1,0 +1,33 @@
+<h1 class="text-bg-light d-inline-flex rounded p-2 mx-3 fw-bold">
+    The Tech Blog
+</h1>
+</header>
+<main class="container container-fluid mt-5">
+    <div class="border border-dark mb-4 blog-post">
+        <div class="d-flex bg-dark p-2">
+            <h3 class="text-light">
+                {{post.title}}
+            </h3>
+            <p class="ms-auto text-light">
+                Posted by {{post.user.username}} on {{format_date post.date_created}}
+            </p>
+        </div>
+        <p class="p-2">
+            {{post.description}}
+        </p>
+    </div>
+    <div class="container border border-dark mb-4 p-3">
+        <div>
+            <p>
+                Comment
+            </p>
+            <form class="form comment-form">
+                <textarea class="w-100"></textarea>
+                <div class="form-group mt-2">
+                    <button class="btn btn-dark w-100" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
