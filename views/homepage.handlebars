@@ -1,13 +1,20 @@
-      <div class="border border-dark">
+<h1 class="text-bg-light d-inline-flex rounded p-2 mx-3 fw-bold">
+    The Tech Blog
+</h1>
+</header>
+<main class="container container-fluid mt-5">
+    {{#each posts as |post|}}
+    <div class="border border-dark mb-4">
         <div class="d-flex bg-dark p-2">
             <h3 class="text-light">
-                Why MVC is so important
+                {{post.title}}
             </h3>
             <p class="ms-auto text-light">
-                Posted by {{User}} on {{Date}}
+                Posted by {{post.user.username}} on {{format_date post.date_created}}
             </p>
         </div>
         <p class="p-2">
-            MVC allows devs to maintian a true serpation of concerns, devising their code between the Model layer for data, the VIew layer for design, and the controller layer for application logic.
+            {{post.description}}
         </p>
-      </div>
+    </div>
+    {{/each}}

@@ -5,3 +5,7 @@
 a {
     text-decoration: none;
 }
+
+input {
+    max-width: 100%;
+}

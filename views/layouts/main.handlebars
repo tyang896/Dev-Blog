@@ -13,20 +13,15 @@
     <header class="display-flex justify-space-between align-center p-2 bg-dark">
       <nav class="mb-3">
         <a href="/" class="link-light m-3">Home</a>
-        <a href="/" class="link-light m-3">Dashboard</a>
+        <a href="/dashboard" class="link-light m-3">Dashboard</a>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile" class="link-light">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/logout" class="link-light m-3">logout</a>
         {{else}}
-        <a href="/login" class="link-light">login</a>
+        <a href="/login" class="link-light m-3">login</a>
         {{/if}}
       </nav>
-      <h1 class="text-bg-light d-inline-flex rounded p-2 mx-3 fw-bold">
-        The Tech Blog
-      </h1>
-    </header>
-    <main class="container container-fluid mt-5">
+
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
