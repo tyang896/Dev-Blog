@@ -16,13 +16,24 @@
             {{post.description}}
         </p>
     </div>
+    {{#if comments}}
+    {{#each comments as |comment|}}
+    <div class="border border-dark mb-4 p-3">
+        <p>
+            {{comment.description}}
+        </p>
+        <p>- {{comment.user.username}}, {{format_date comment.date_created}}</p>
+    </div>
+    {{/each}}
+    {{/if}}
+
     <div class="container border border-dark mb-4 p-3">
         <div>
             <p>
                 Comment
             </p>
-            <form class="form comment-form">
-                <textarea class="w-100"></textarea>
+            <form class="form comment-form" id={{post.id}}>
+                <textarea class="w-100" id="comment-description"></textarea>
                 <div class="form-group mt-2">
                     <button class="btn btn-dark w-100" type="submit">Submit</button>
                 </div>
@@ -30,4 +41,4 @@
         </div>
     </div>
 
-    <script src="./js/index.js"></script>
+    <script src="./js/comment.js"></script>

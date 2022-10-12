@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User, Post} = require('../models');
+const {User, Post, Comment} = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
@@ -57,6 +58,7 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 })
 
+//Get the post details for a specific post
 router.get('/:id',  withAuth, async (req, res) => {
   try{
     const postData = await Post.findByPk(req.params.id, {
@@ -71,8 +73,22 @@ router.get('/:id',  withAuth, async (req, res) => {
 
     const post = postData.get({plain: true});
 
+    const allComments = await Comment.findAll({
+      where: {post_id: req.params.id},
+      include: [
+          {
+              model: User,
+              attributes: ['username']
+          }
+      ],
+  })
+
+  const comments = allComments.map((comment) => comment.get({plain: true}));
+        console.log(comments);
+        console.info(comments);
     res.render('blogpost', {
       post,
+      comments,
       logged_in: true,
     });
   }catch (err) {
