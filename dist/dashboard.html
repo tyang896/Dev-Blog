@@ -31,7 +31,29 @@
             </h1>
         </header>
         <main class="container container-fluid mt-5">
-            <button type="button" id="new-post" class="btn btn-dark min-vw-100">+ New Post</button>
+            <div class="border border-dark mb-3">
+                <h2 class="p-2 bg-dark text-light">Create New Post</h2>
+                <form class="form create-form p-3" id="user-form">
+                    <div class="form-group mb-2">
+                        <label for="title-name">Title</label>
+                        <br>
+                        <input class="form-input w-100" type="text" id="title-name" />
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="content-description">Content</label>
+                        <br>
+                        <!-- <input class="form-input" type="text" id="content-description" /> -->
+                        <textarea name="comment" form="user-form" class="w-100"></textarea>
+                    </div>
+                    <div class="form-group mt-2">
+                        <button class="btn btn-dark" type="submit">Create</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <button type="button" id="new-post" class="btn btn-dark w-100">+ New Post</button>
+            </div>
+
         </main>
         <footer>
 

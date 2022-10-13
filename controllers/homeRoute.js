@@ -34,14 +34,38 @@ router.get('/dashboard', withAuth, async (req, res) => {
         });
     
         const user = userData.get({ plain: true });
-    
+        
+        //TODO: Get all the posts created by the user
+        const postData = await Post.findAll({//NOTE: might need to change this to include the USER model
+          where: {user_id: req.session.user_id}
+        })
+
+        const posts = postData.map((post) => post.get({plain: true}));
+        //TODO: Allow users to click on exisiting posts in the dashboard to edit or delete them
+        //TODO: Have a new javascript eventlistener button to allow users to click on the button
+        //TODO: create new handlebar to allow users to post a comment
+        //TODO: In the new handlebar page, when users click on the submit button, The post is created and added to their dashboard and homepage
         res.render('dashboard', {
           ...user,
+          posts,
           logged_in: true
         });
       } catch (err) {
         res.status(500).json(err);
       }
+})
+
+
+router.get('/dashboard/:id', withAuth, (req, res) => {
+  res.render('editPost');
+})
+
+//Get the page to create a new post
+router.get('/create', withAuth, (req, res) => {
+  if(!req.session.logged_in){
+    res.render('login')
+  }
+  res.render('createPost', {logged_in: req.session.logged_in});
 })
 
 router.get('/login', (req, res) => {

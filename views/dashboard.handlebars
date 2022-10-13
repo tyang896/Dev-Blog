@@ -3,7 +3,25 @@
 </h1>
 </header>
 <main class="container container-fluid mt-5">
-    <div id="new-post" class="d-flex justify-content-center">
+    {{#if posts}}
+    {{#each posts as |post|}}
+    <div class="container mb-3 bg-dark">
+        <a href="/dashboard/{{post.id}}" class="mb-3">
+            <div class="d-flex">
+                <h4 class="text-light p-3">
+                    {{post.title}}
+                </h4>
+                <h4 class="ms-auto text-light p-3">
+                    {{format_date post.date_created}}
+                </h4>
+            </div>
+        </a>
+    </div>
+
+    {{/each}}
+    {{/if}}
+    <div class="d-flex justify-content-center">
         <button type="button" id="new-post" class="btn btn-dark w-50">+ New Post</button>
     </div>
-    
+
+    <script src="./js/post.js"></script>
