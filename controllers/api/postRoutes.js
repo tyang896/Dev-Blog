@@ -33,9 +33,9 @@ router.post('/comment', withAuth, async (req, res) => {
     }
 })
 
-//ROUTE: api/posts/:id
-router.put('/:id', (req, res) => {
+// //ROUTE: api/posts/:id
+// router.put('/:id', (req, res) => {
 
-})
+// })
 
 module.exports = router;
