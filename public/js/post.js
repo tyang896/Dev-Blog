@@ -1,6 +1,13 @@
+
+// const posts = document.querySelectorAll('button.edit-post')
+
+
+
+
 const newPost = async () => {
     const response =  await fetch('/create', {
         method: 'GET',
+        headers: {'Content-Type': 'application/json'}
     })
 
     if (response.ok){
@@ -9,30 +16,26 @@ const newPost = async () => {
     
 }
 
-const handleNewPost = async (event) => {
-    event.preventDefault();
+// const editPost = async (event) => {
+//     let postId = event.target.getAttribute("id");
+//     console.log(postId);
+//     const response = await fetch(`/dashboard/${postId}`, {
+//         method: 'GET',
+//         headers: {'Content-Type': 'application/json'}
+//     })
+//     if (response.ok){
+//         document.location.replace(`/dashboard/${postId}`);
+//     }
+// }
 
-    const title = document.querySelector('#title-name').value.trim();
-    const content = document.querySelector('#content-description').value.trim();
 
-    if (title && content) {
-        const response = await fetch('/api/posts', {
-            method: 'POST',
-            body: JSON.stringify({title, content}),
-            headers: {'Content-Type': 'application/json'},
-        });
-    
-        if (response.ok){
-            document.location.replace('/dashboard');
-        } else {
-            alert(response.statusText);
-        }
-    }
 
-}
+
 
 document.querySelector('#new-post').addEventListener('click', newPost)
+// posts.forEach(post => {
+//     post.addEventListener('click', editPost)
+// })
 
-document.querySelector('.create-form').addEventListener('submit', handleNewPost);
 
 //In the future: Just hide the form, and then show it when the user clicks on the new post button

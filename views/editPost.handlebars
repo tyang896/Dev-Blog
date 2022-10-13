@@ -1,0 +1,29 @@
+<h1 class="text-bg-light d-inline-flex rounded p-2 mx-3 fw-bold">
+    Your Dashboard
+</h1>
+</header>
+<main class="container container-fluid mt-5">
+    <div class="border border-dark mb-3 post-container" id={{id}}>
+        <h2 class="p-2 bg-dark text-light">Edit Post</h2>
+        <form class="form create-form p-3" id="edit-form">
+            <div class="form-group mb-2">
+                <label for="title-name">Title</label>
+                <br>
+                <input class="form-input w-100" type="text" id="title-name" value="{{title}}" />
+            </div>
+            <div class="form-group mb-2">
+                <label for="content-description">Content</label>
+                <br>
+                <!-- <input class="form-input" type="text" id="content-description" /> -->
+                <textarea name="comment" form="user-form" class="w-100"
+                    id="content-description">{{description}}</textarea>
+            </div>
+            <button class="btn btn-dark updateBtn" type="submit" value="Update" id="updateBtn">Update</button>
+            <button class="btn btn-dark deleteBtn" type="submit" value="Delete" id="deleteBtn">Delete</button>
+        </form>
+    </div>
+    <div>
+        <button type="button" id="new-post" class="btn btn-dark w-100">+ New Post</button>
+    </div>
+
+  <script src="./js/edit.js"></script>

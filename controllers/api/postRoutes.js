@@ -5,10 +5,6 @@ const withAuth = require('../../utils/auth');
 //ROUTE: api/posts
 router.post('/', withAuth, async (req, res) => {
     try{
-        console.log("this try is working for the api/posts/")
-        console.log(req.body);
-        console.log(req.body.title);
-        console.log(req.body.content);
         const postData = await Post.create({
             title: req.body.title,
             description: req.body.content,
@@ -35,6 +31,11 @@ router.post('/comment', withAuth, async (req, res) => {
     }catch (err)  {
         res.status(500).json(err);
     }
+})
+
+//ROUTE: api/posts/:id
+router.put('/:id', (req, res) => {
+
 })
 
 module.exports = router;

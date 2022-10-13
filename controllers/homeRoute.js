@@ -56,9 +56,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 })
 
 
-router.get('/dashboard/:id', withAuth, (req, res) => {
-  res.render('editPost');
-})
 
 //Get the page to create a new post
 router.get('/create', withAuth, (req, res) => {
@@ -119,6 +116,21 @@ router.get('/:id',  withAuth, async (req, res) => {
     res.status(400).json(err);
   }
     
+})
+
+//ROUTE: dashboard/:id
+router.get('/dashboard/:id', async (req, res) => {
+  try{
+    const postData = await Post.findByPk(req.params.id)
+    const post = postData.get({plain: true});
+    res.render('editPost', {
+      ...post, 
+      logged_in: req.session.logged_in
+    });
+  }catch (err){
+    res.status(500).json(err);
+  }
+
 })
 
 module.exports = router;
