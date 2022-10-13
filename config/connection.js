@@ -11,6 +11,12 @@ if (process.env.DATABASE_URL) {
     process.env.DB_USER,
     process.env.DB_PASSWORD,
     {
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
+      },
       host: 'localhost',
       dialect: 'mysql',
       port: 3306
