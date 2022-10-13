@@ -17,7 +17,10 @@ const hbs = exphbs.create({ helpers });
 const sess = {
     secret: "super secret",//May need to update later
     cookie: {
-        expires: 10 * 60 * 1000,
+        maxAge: 600000,
+        httpOnly: true,
+        secure: false,
+        sameSite: 'strict', //prevent cross-site scripting. Cookies only initialize when coming from our own domain.
     },
     resave: false,
     saveUninitialized: true,
