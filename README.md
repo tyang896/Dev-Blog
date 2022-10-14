@@ -1,7 +1,7 @@
 # Dev-Blog
 
 ## Description
-This is a tech blog web application. Users can sign into the account and write blogs about tech. Others users may comment on the blog and see who made the comments. The purpose of this project was to understand how to create a full-stack web application and having it deployed on a server. This application still has issues and needs some work. Currently, users are unable to update or delete their posts and the application can only run locally. The most challenging part of this project was figuring out how to troubleshoot errors on the back-end. In the future, I hope to have a better understanding of the back-end.
+This is a tech blog web application. Users can sign into the account and write blogs about tech. Users may comment on other blogs and see who made the comments. The purpose of this project was to understand how to create a full-stack web application and having it deployed on a server. This application still has issues and needs some work. However, it can run fine at the moment. The most challenging part of this project was figuring out how to troubleshoot errors on the back-end. In the future, I hope to have a better understanding of the back-end so that I can troubleshoot errors more effectively.
 
 ## Table of Contents 
 
