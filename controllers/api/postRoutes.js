@@ -1,8 +1,10 @@
+//imports
 const router = require('express').Router();
 const {Post, Comment, User} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //ROUTE: api/posts
+//Add a new user post
 router.post('/', withAuth, async (req, res) => {
     try{
         const postData = await Post.create({
@@ -19,6 +21,7 @@ router.post('/', withAuth, async (req, res) => {
 })
 
 //ROUTE: api/posts/comment
+//Add a new comment
 router.post('/comment', withAuth, async (req, res) => {
     try{
         //Create the comment data

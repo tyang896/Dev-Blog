@@ -3,6 +3,7 @@
 </h1>
 </header>
 <main class="container container-fluid mt-5">
+    {{!-- Render all posts in the database here: --}}
     {{#each posts as |post|}}
     <div class="border border-dark mb-4 blog-post">
         <a href="/{{post.id}}">

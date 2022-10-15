@@ -8,6 +8,7 @@ class User extends Model {
   }
 }
 
+//Create a new user with username, and password information
 User.init(
   {
     id: {

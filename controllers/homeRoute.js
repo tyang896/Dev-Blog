@@ -1,7 +1,9 @@
+//imports
 const router = require('express').Router();
 const {User, Post, Comment} = require('../models');
 const withAuth = require('../utils/auth');
 
+//This route is the first page the user see
 router.get('/', async (req, res) => {
     try{
         const postData = await Post.findAll({

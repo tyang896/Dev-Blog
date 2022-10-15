@@ -3,6 +3,7 @@
 </h1>
 </header>
 <main class="container container-fluid mt-5">
+    {{!-- User blogpost --}}
     <div class="border border-dark mb-4 blog-post">
         <div class="d-flex bg-dark p-2">
             <h3 class="text-light">
@@ -16,6 +17,7 @@
             {{post.description}}
         </p>
     </div>
+    {{!-- If comments exists, render them on the screen --}}
     {{#if comments}}
     {{#each comments as |comment|}}
     <div class="border border-dark mb-4 p-3">
@@ -26,7 +28,7 @@
     </div>
     {{/each}}
     {{/if}}
-
+    {{!-- Form to add new comment --}}
     <div class="container border border-dark mb-4 p-3">
         <div>
             <p>
