@@ -15,9 +15,9 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
 const sess = {
-    secret: "super secret",
+    secret: process.env.SECRET,
     cookie: {
-        maxAge: 600000,
+        maxAge: 30*60*1000,//Cookie expires after 30 minutes. To adjust the time, change the 30 to a different number
         httpOnly: true,
         secure: false,
         sameSite: 'strict', //prevent cross-site scripting. Cookies only initialize when coming from our own domain.

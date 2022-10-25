@@ -1,9 +1,5 @@
-// const postCont = document.querySelector('.post-container')
-// const postId = postCont.getAttribute('id');
-// console.log(postId);
+const postId = document.location.pathname.split("/").pop();
 
-
-console.log("This edit.js file is connected")
 const newPost = async () => {
     const response =  await fetch('/create', {
         method: 'GET',
@@ -20,8 +16,8 @@ const updatePost = async (event) => {
     const title = document.querySelector('#title-name').value.trim();
     const content = document.querySelector('#content-description').value.trim();
     if (title && content) {
-        const response = await fetch('/api/posts/:id', {
-            method: 'UPDATE',
+        const response = await fetch(`/api/posts/${postId}`, {
+            method: 'PUT',
             body: JSON.stringify({title, content}),
             headers: {'Content-Type': 'application/json'},
         })
@@ -34,15 +30,19 @@ const updatePost = async (event) => {
 
 }
 
-// const getPost = async (event) => {
-//     const response = await fetch('/dashboard/:id', {
-//         method: 'GET'
-//     })
-// }
+
+const deletePost = async (event) => {
+    const response = await fetch(`/api/posts/${postId}`, {
+        method: 'DELETE',
+    })
+
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert('Failed to delete post');
+    }
+}
 
 document.querySelector('#new-post').addEventListener('click', newPost);
-
-
-document.querySelector('.updateBtn').addEventListener('submit', updatePost);
-document.querySelector('.deleteBtn').addEventListener('submit', deletePost);
-// document.querySelector('.post-link').addEventListener('click', );
+document.querySelector('#updateBtn').addEventListener('click', updatePost);
+document.querySelector('#deleteBtn').addEventListener('click', deletePost);
